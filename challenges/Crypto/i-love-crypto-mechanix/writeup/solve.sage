@@ -15,7 +15,6 @@ def breakLCG(x0,x1,x2,m):
 def revLCG(state,a,b,m):
     return (state - b)*pow(a,-1,m)%m
 
-
 x0,x1,x2 = hints
 a,b = breakLCG(x0,x1,x2,p)
 outputs = []
