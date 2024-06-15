@@ -75,6 +75,6 @@ $a \mod 181 = 102$
 
 etc.
 
-where $a$ is the flag. How can we turn these into an actua number? Why, **Chinese remainder theorem** of course! CRT is actually quite simple, but I don't want to explain it here. Basically this will get me the flag. This explanation was a bit superfical, the real process it a bit more complex than I made it out to be so I recomend seeing my [script](pohlig_parital.sage) for more detail.
+where $a$ is the flag. How can we turn these into an actual number? Why, **Chinese remainder theorem** of course! CRT is actually quite simple, but I don't want to explain it here. Basically this will get me the flag. This explanation was a bit superfical, the real process it a bit more complex than I made it out to be so I recomend seeing my [script](pohlig_parital.sage) for more detail.
 
 Flag: `SIVUSCG{welcome_to_the_intro_to_CRT!}`
