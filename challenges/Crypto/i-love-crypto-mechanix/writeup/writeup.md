@@ -6,7 +6,7 @@ This program uses an LCG to generate some random padding before encoding the sam
 ## Solution 
 ### LCG
 
-First thing is to deal with that pesky LCG. Since we are given the prime modulus this will be an easy decrypt and we only need 3 sequential outputs to do that. And, what do you know, the hints array that we are given just so happen to be 3 sequential outputs! Lets call these outputs *$x_0$*, *$x_1$*, and *$x_2$*. And given the equation for an LCG:
+First thing is to deal with that pesky LCG. Since we are given the prime modulus this will be an easy decrypt and we only need 3 sequential outputs to do that. And, what do you know, the hints array that we are given just so happen to be 3 sequential outputs! Lets call these outputs $x_0$, $x_1$, and $x_2$. And given the equation for an LCG:
 
 $y = ax + b \mod m$<br />
 
