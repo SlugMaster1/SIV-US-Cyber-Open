@@ -10,15 +10,15 @@ Where $f$ is the flag polynomial, $h$ and $g$ are noise polynomials of degree 10
 
 ## Solution 
 
-The if not for the $n$ polynomials this problem could be solved rather easily by performing a polynomial GCD. This is like a normal GCD except with polynomials. If I were given $fg$ and $fh$ I could find thier shared factor using the **gcd** function in sagemath. The problem is that the two small noise polynomials disallow this, so the goal is to find a way to get rid of them.
+The if not for the $n$ polynomials this problem could be solved rather easily by performing a polynomial GCD. This is like a normal GCD except with polynomials. If I were given $fg$ and $fh$ I could find their shared factor using the **gcd** function in Sagemath. The problem is that the two small noise polynomials disallow this, so the goal is to find a way to get rid of them.
 
-I am not quite sure what the intended solution to this problem was, I know that it isnt the way I solved it, but I think that alternative ways of solving problems can give a lot of insight. My method relies on the fact that I already know the first 8 characters of the flag. This because the flag must start with `SIVUSCG{` which means that I also know the first 8 terms in the flag polynomial. Using this knowlage I can start calculating from the smallest terms first. *Note I will be using the notation $p_1(1)$ as a way of describing getting the $x^1$ term from the polynomial, this is not $p_1$ evaluated at $x=1$*
+I am not quite sure what the intended solution to this problem was, I know that it isn't the way I solved it, but I think that alternative ways of solving problems can give a lot of insight. My method relies on the fact that I already know the first 8 characters of the flag. This because the flag must start with `SIVUSCG{` which means that I also know the first 8 terms in the flag polynomial. Using this knowledge I can start calculating from the smallest terms first. *Note I will be using the notation $p_1(1)$ as a way of describing getting the $x^1$ term from the polynomial, this is not $p_1$ evaluated at $x=1$*
 
 So we know that $p_1(0) = f(0)g(0) + n_1(0)$ because that is the only way to make an $x^0$ term in a polynomial. We know $p_1(0)$ because it is in the polynomial we are given, and we know $f(0)$ because it is just the ascii value of the first character of the flag (S) which is 83. If we plug the values we know into the equation we get:
 
 $92 = 83g(0) + n_1(0)$
 
-Which leaves me with two unknowns and only one equation. This is not possible to solve normally, but I am going to employ a forbidden technique where I completley igore the error term $n_1$. Why can I do this? Well if we look at the way that the noise polynomials are generated:
+Which leaves me with two unknowns and only one equation. This is not possible to solve normally, but I am going to employ a forbidden technique where I completely ignore the error term $n_1$. Why can I do this? Well if we look at the way that the noise polynomials are generated:
 ```python
 noise1 = P.random_element(degree=5)
 noise2 = P.random_element(degree=5)
@@ -28,7 +28,7 @@ We can see that they are generated randomly. The specifics of this randomness ar
 $92 - n_1(0) = 83g(0)$<br />
 $\frac{92 - n_1(0)}{83} = g(0)$
 
-And so if $n_1(0)$ is less than $\frac{83}{2}$ (as it almost certainly is) then we can consider it a safe assumption that $g(0) = \lfloor \frac{p_1(0)}{f(0)} \rceil$, or more specifically $g(0) = \lfloor \frac{92}{83} \rceil = 1$. Using this knowlege we can determine that
+And so if $n_1(0)$ is less than $\frac{83}{2}$ (as it almost certainly is) then we can consider it a safe assumption that $g(0) = \lfloor \frac{p_1(0)}{f(0)} \rceil$, or more specifically $g(0) = \lfloor \frac{92}{83} \rceil = 1$. Using this knowledge we can determine that
 
 $n_1(0) = p_1(0) - f(0)g(0)$ <br />
 $n_1(0) = 92 - 83*1$  <br />
@@ -52,7 +52,7 @@ $n_1(1) = p_1(1) - f(1)g(0) - f(0)g(1)$<br />
 $n_1(1) = 2896 - 73*1 - 83*34$<br />
 $n_1(1) = 1$
 
-Repeat these step untill you recover the entire $n_1$ polynomial, and repeat for $n_2$. This will produce the following:
+Repeat these step until you recover the entire $n_1$ polynomial, and repeat for $n_2$. This will produce the following:
 
 $n_1 = 6x^5 + x^4 - x^3 + x^2 + x + 9$ <br />
 $n_2 = -x^5 + 2x^4 + x^3 - x^2 - 19$
@@ -65,6 +65,6 @@ $p_1 - n_1 = fg$<br />
 $p_2 - n_2 = fh$<br />
 $f = \gcd(fg,fh) = \gcd(p_1 - n_1,p_2 - n_2)$
 
-The coefficients fo the $f$ polynomial represent each byte of the flag.
+The coefficients of the $f$ polynomial represent each byte of the flag.
 
 Flag: `SIVUSCG{Poly_GCD-is_kinda_cool}`

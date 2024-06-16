@@ -5,23 +5,23 @@ This problem is a simple ECC implementation except for the fact that the *a* and
 
 ## Solution 
 
-This one is a bit unusual in that the way that you have to solve it. The only thing that we are given is *G*, and *p*. This, to the best of my knowlege is not enough to solve for a and b. The generator (G) is a point on the curve, so setting setting up our values into the typical eliptic curve equation gives:
+This one is a bit unusual in that the way that you have to solve it. The only thing that we are given is *G*, and *p*. This, to the best of my knowledge is not enough to solve for a and b. The generator (G) is a point on the curve, so setting setting up our values into the typical elliptic curve equation gives:
 
 $G_y^2 = G_x^3 + aG_x + b \mod p$
 
-At this point we are trying to solve a singe equation for two unkowns. This is impossible. But there is an important key to the solution:
+At this point we are trying to solve a singe equation for two unknowns. This is impossible. But there is an important key to the solution:
 ```python
 a = random.randint(2024, 2^32)
 b = random.randint(2024, a)
 ```
 Both a and b are less than $2^{32}$ which is $4294967296$. This is possible to brute force in a rather short time, but only if the calculations per loop iteration are kept to a minimum. There are two options to brute force: a or b. It may be tempting to choose b because it is less than an and therefore will require fewer loop iterations to find, but I think that a is actually better. The reason I came to this conclusion is thus:
 
-If we solve the eliptic curve equation for a and b we get
+If we solve the elliptic curve equation for a and b we get
 
 $a = (G_y^2 - G_x^3 - b)G_x^{-1} \mod p$ <br />
 $b = G_y^2 - G_x^3 - aG_x \mod p$
 
-Since brute forcing b, that is, solving for a, requires a modular inverse calculation every time, the extra iterations of a would be outweiged by the time saved per iteration. But at the end of the day, it is possible to do both ways. So I wrote the following script to brute force it:
+Since brute forcing b, that is, solving for a, requires a modular inverse calculation every time, the extra iterations of a would be outweighed by the time saved per iteration. But at the end of the day, it is possible to do both ways. So I wrote the following script to brute force it:
 ```python
 from tqdm import tqdm
 # y^2 = x^3 + a*x + b
