@@ -12,7 +12,7 @@ Where $f$ is the flag polynomial, $h$ and $g$ are noise polynomials of degree 10
 
 The if not for the $n$ polynomials this problem could be solved rather easily by performing a polynomial GCD. This is like a normal GCD except with polynomials. If I were given $fg$ and $fh$ I could find their shared factor using the **gcd** function in Sagemath. The problem is that the two small noise polynomials disallow this, so the goal is to find a way to get rid of them.
 
-I am not quite sure what the intended solution to this problem was, I know that it isn't the way I solved it, but I think that alternative ways of solving problems can give a lot of insight. My method relies on the fact that I already know the first 8 characters of the flag. This because the flag must start with `SIVUSCG{` which means that I also know the first 8 terms in the flag polynomial. Using this knowledge I can start calculating from the smallest terms first. *Note I will be using the notation $p_1(1)$ as a way of describing getting the $x^1$ term from the polynomial, this is not $p_1$ evaluated at $x=1$*
+I am not quite sure what the intended solution to this problem was, I know that it isn't the way I solved it, but I think that alternative ways of solving problems can give a lot of insight. My method relies on the fact that I already know the first 8 characters of the flag. This because the flag must start with `SIVUSCG{` which means that I also know the first 8 terms in the flag polynomial. Using this knowledge I can start calculating from the smallest terms first. *Note I will be using the notation* $p_1(1)$ *as a way of describing getting the* $x^1$ *term from the polynomial, this is not* $p_1$ *evaluated at* $x=1$.
 
 So we know that $p_1(0) = f(0)g(0) + n_1(0)$ because that is the only way to make an $x^0$ term in a polynomial. We know $p_1(0)$ because it is in the polynomial we are given, and we know $f(0)$ because it is just the ascii value of the first character of the flag (S) which is 83. If we plug the values we know into the equation we get:
 
@@ -49,7 +49,7 @@ So we can make the same assumptions that we did last time:
 $g(1) = \lfloor \frac{2823}{83} \rceil$ <br />
 $g(1) = 34$<br />
 $n_1(1) = p_1(1) - f(1)g(0) - f(0)g(1)$<br />
-$n_1(1) = 2896 - 73*1 - 83*34$<br />
+$`n_1(1) = 2896 - 73*1 - 83*34`$<br />
 $n_1(1) = 1$
 
 Repeat these step until you recover the entire $n_1$ polynomial, and repeat for $n_2$. This will produce the following:

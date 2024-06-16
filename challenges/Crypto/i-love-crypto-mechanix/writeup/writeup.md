@@ -75,7 +75,7 @@ $`\begin{bmatrix} o_0^3 & 3o_0^2o_1 & 3o_0o_1^2 & o_1^3 & c_1 \\ o_2^3 & 3o_2^2o
 
 Don't forget that this matrix is mod N. Doing this will solve the equation so that there is only three terms left in the last row of the matrix. We will call those terms A, B, and C:
 
-$\begin{bmatrix} 0 & 0 & A & B & C\end{bmatrix}$ <br />
+$`\begin{bmatrix} 0 & 0 & A & B & C\end{bmatrix}`$ <br />
 
 Those terms are the $f$ coefficient, the constant, and the solution to the equation respectively. Plugging them back into equation form produces:
 
