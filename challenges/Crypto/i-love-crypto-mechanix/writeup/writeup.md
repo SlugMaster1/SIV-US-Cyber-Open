@@ -71,7 +71,7 @@ $c_3 = o_4^3f^3 + 3o_4^2o_5f^2 + 3o_0o_5^2f + o_5^3 \mod N$<br />
 
 There are a few ways to solve this system of equations, the way I used is to put the coefficients into a matrix and use Gaussian elimination. Setting up the matrix like so:
 
-$\begin{bmatrix} o_0^3 & 3o_0^2o_1 & 3o_0o_1^2 & o_1^3 & c_1 \\ o_2^3 & 3o_2^2o_3 & 3o_2o_3^2 & o_3^3 & c_2 \\ o_4^3 & 3o_4^2o_5 & 3o_4o_5^2 & o_5^3 & c_3\end{bmatrix}$ <br />
+$`\begin{bmatrix} o_0^3 & 3o_0^2o_1 & 3o_0o_1^2 & o_1^3 & c_1 \\ o_2^3 & 3o_2^2o_3 & 3o_2o_3^2 & o_3^3 & c_2 \\ o_4^3 & 3o_4^2o_5 & 3o_4o_5^2 & o_5^3 & c_3\end{bmatrix}`$ <br />
 
 Don't forget that this matrix is mod N. Doing this will solve the equation so that there is only three terms left in the last row of the matrix. We will call those terms A, B, and C:
 
